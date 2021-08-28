@@ -4,9 +4,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Vic.SportsStore.Domain
+namespace Vic.SportsStore.Domain.Entities
 {
-    public class Class1
+    public class Product
     {
+
+        public int ProductId { get; set; }
+
+
+
     }
 }
