@@ -14,16 +14,27 @@ namespace Vic.SportsStore.DebugConsole
         {
 
             Console.WriteLine("Start");
+
             using (var ctx = new EFDbContext())
             {
-                var product = new Product() { };
+                for (int i = 0; i < 10; i++)
+                {
+                    var product = new Product()
+                    {
+                        Name = $"Football{i}",
+                        Price = i+12,
+                        Description=$"This is football {i }"
+                    };
 
+                    ctx.Products.Add(product);
 
+                }
 
-                ctx.Products.Add(product);
                 ctx.SaveChanges();
             }
 
+            Console.WriteLine("End");
+            Console.ReadLine();
 
 
         }
