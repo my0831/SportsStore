@@ -13,11 +13,9 @@ namespace Vic.SportsStore.WebApp.Controllers
 {
     public class ProductController : Controller
     {
-
         public const int PageSize = 3;
 
         public IProductsRepository Repository { get; set; }
-
 
         public ViewResult List(string category, int page = 1)
         {
@@ -27,7 +25,6 @@ namespace Vic.SportsStore.WebApp.Controllers
                 .OrderBy(p => p.ProductId)
                 .Skip((page - 1) * PageSize)
                 .Take(PageSize);
-
 
             var pagingInfo = new PagingInfo
             {

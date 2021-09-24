@@ -14,5 +14,6 @@ namespace Vic.SportsStore.WebApp.Models
         {
             get { return (int)Math.Ceiling((decimal)TotalItems / ItemsPerPage); }
         }
+
     }
 }
