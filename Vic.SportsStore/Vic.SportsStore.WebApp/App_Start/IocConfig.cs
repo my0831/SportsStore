@@ -7,6 +7,8 @@ using System.Web;
 using System.Web.Mvc;
 using Vic.SportsStore.Domain.Abstract;
 using Vic.SportsStore.Domain.Concrete;
+using Vic.SportsStore.WebApp.Infrastructure.Abstract;
+using Vic.SportsStore.WebApp.Infrastructure.Concrete;
 
 namespace Vic.SportsStore.WebApp
 {
@@ -20,6 +22,20 @@ namespace Vic.SportsStore.WebApp
 
             builder.RegisterInstance<IProductsRepository>(new
             EFProductRepository()).PropertiesAutowired();
+
+            //builder.RegisterInstance<IProductsRepository>(new
+            //EmailOrderProcessor(new EmailSettings()).PropertiesAutowired();
+
+            builder.RegisterType<EmailSettings>().PropertiesAutowired();
+
+
+            builder.RegisterType<EmailOrderProcessor>()
+                .As<IOrderProcessor>()
+                .PropertiesAutowired();
+
+            builder.RegisterInstance<IAuthProvider>(new FormsAuthProvider())
+                .PropertiesAutowired();
+
 
             var container = builder.Build();
             DependencyResolver.SetResolver(new AutofacDependencyResolver(container));
